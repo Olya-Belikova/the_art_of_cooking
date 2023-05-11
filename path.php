@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 const SITE_ROOT = __DIR__;
-const BASE_URL = "http://localhost/dinamic-site/";
+const BASE_URL = 'http://localhost/the_art_of_cooking/';
 define("ROOT_PATH", realpath(dirname(__FILE__)));

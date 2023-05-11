@@ -8,7 +8,7 @@ ClassicEditor
                 { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
             ]
         }
-    } )
-    .catch( error => {
-        console.log( error );
     } );
+    // .catch( error => {
+    //     console.log( error );
+    // } );

@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
+
 include SITE_ROOT . "/app/database/db.php";
 
 $errMsg = [];
@@ -164,12 +166,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update-user'])){
     $email = $user['email'];
 }
 
-//if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pub_id'])){
-//    $id = $_GET['pub_id'];
-//    $publish = $_GET['publish'];
-//
-//    $postId = update('posts', $id, ['status' => $publish]);
-//
-//    header('location: ' . BASE_URL . 'admin/posts/index.php');
-//    exit();
-//}
+/*if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pub_id'])){
+    $id = $_GET['pub_id'];
+    $publish = $_GET['publish'];
+
+    $postId = update('posts', $id, ['status' => $publish]);
+
+    header('location: ' . BASE_URL . 'admin/posts/index.php');
+    exit();
+}*/

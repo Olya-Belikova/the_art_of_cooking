@@ -11,8 +11,8 @@ $topics = selectAll('topics');
 
 // Код для формы создания категории
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['topic-create'])){
-    $name = trim($_POST['name']);
-    $description = trim($_POST['description']);
+    $name = trim($_POST['name']) ? trim($_POST['name']) : '';
+    $description = trim($_POST['description']) ? trim($_POST['description']) : '';
 
     if($name === '' || $description === ''){
         $errMsg = "Не все поля заполнены!";

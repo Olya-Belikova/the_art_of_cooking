@@ -32,9 +32,9 @@
         <div class="posts col-9">
             <div class="row title-table">
                 <h2>Управление комментариями</h2>
-                <div class="mb-12 col-12 col-md-12 err">
-                    <p><?=$_SESSION['error'];?></p>
-                </div>
+                <!--<div class="mb-12 col-12 col-md-12 err">
+                    <p><//?=$_SESSION['error'];?></p>
+                </div>-->
                 <div class="col-1">ID</div>
                 <div class="col-5">Текст</div>
                 <div class="col-2">Автор</div>

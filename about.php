@@ -1,12 +1,17 @@
-﻿<?php
+<?php
     include "path.php";
     include "app/controllers/topics.php";
-    $posts = selectAll('posts', ['id_topic' => $_GET['id']]);
+
+    $page = isset($_GET['page']) ? $_GET['page']: 1;
+    $limit = 2;
+    $offset = $limit * ($page - 1);
+    $total_pages = round(countRow('posts') / $limit, 0);
+
+    $posts = selectAllFromPostsWithUsersOnIndex('posts', 'users', $limit, $offset);
     $topTopic = selectTopTopicFromPostsOnIndex('posts');
-    $category = selectOne('topics', ['id' => $_GET['id']]);
+
 
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,45 +36,19 @@
 
 <?php include("app/include/header.php"); ?>
 
-<!-- блок карусели START-->
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</div>
-<!-- блок карусели END-->
-
 <!-- блок main-->
 <div class="container">
     <div class="content row">
         <!-- Main Content -->
         <div class="main-content col-md-9 col-12">
-            <h2>Статьи с раздела <strong><?=$category['name']; ?></strong></h2>
-            <?php foreach ($posts as $post): ?>
-                <div class="post row">
-                    <div class="img col-12 col-md-4">
-                        <img src="<?=BASE_URL . 'assets/images/posts/' . $post['img'] ?>" alt="<?=$post['title']?>" class="img-thumbnail">
-                    </div>
-                    <div class="post_text col-12 col-md-8">
-                        <h3>
-                            <a href="<?=BASE_URL . 'single.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 80) . '...'  ?></a>
-                        </h3>
-                        <i class="far fa-user"> <?=isset($post['username']) ? $post['username'] : 'Неизвестный';?></i>
-                        <i class="far fa-calendar"> <?=$post['created_date'];?></i>
-                        <p class="preview-text">
-
-                            <?=mb_substr($post['content'], 0, 55, 'UTF-8'). '...'  ?>
-                        </p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-
+            <h2>The art of cooking</h2>
+            <h2></h2>
+            <p>
+            Всех нас объединяет любовь к кулинарии. Мы не боимся экспериментировать со вкусами, потому что это — ключ к созданию гастрономического шедевра. На нашем сайте собраны рецепты блюд из разных стран и даже самых отдаленных уголков мира. Благодаря пошаговым инструкциям, фото и видео, каждая хозяйка сможет повторить их на своей кухне.
+            </p>
+            <p>
+            The art of cooking — это не только энциклопедия простых и сложных, домашних и изысканных рецептов, но и социальная сеть, на площадке которой кулинары общаются, делятся опытом и дают полезные советы.
+            </p>
         </div>
         <!-- sidebar Content -->
         <div class="sidebar col-md-3 col-12">
@@ -94,7 +73,9 @@
             </div>
 
         </div>
+
     </div>
+
 </div>
 
 <!-- блок main END-->

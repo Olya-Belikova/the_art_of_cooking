@@ -93,6 +93,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_comment'])){
         header('location: ' . BASE_URL . 'admin/comments/index.php');
     }
 }else{
-    $text = trim($_POST['content']);
-    $publish = isset($_POST['publish']) ? 1 : 0;
+    if (isset($_POST['content'])) {
+        $text = trim($_POST['content']);
+    }else {
+        $text = '';
+    }
+    if (isset($_POST['publish'])) {
+        $publish = 1;
+    }else {
+        $publish = 0;
+    }
 }

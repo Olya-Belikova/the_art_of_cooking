@@ -1,12 +1,17 @@
-﻿<?php
+<?php
     include "path.php";
     include "app/controllers/topics.php";
-    $posts = selectAll('posts', ['id_topic' => $_GET['id']]);
+
+    $page = isset($_GET['page']) ? $_GET['page']: 1;
+    $limit = 2;
+    $offset = $limit * ($page - 1);
+    $total_pages = round(countRow('posts') / $limit, 0);
+
+    $posts = selectAllFromPostsWithUsersOnIndex('posts', 'users', $limit, $offset);
     $topTopic = selectTopTopicFromPostsOnIndex('posts');
-    $category = selectOne('topics', ['id' => $_GET['id']]);
+
 
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,26 +36,12 @@
 
 <?php include("app/include/header.php"); ?>
 
-<!-- блок карусели START-->
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</div>
-<!-- блок карусели END-->
-
 <!-- блок main-->
 <div class="container">
     <div class="content row">
         <!-- Main Content -->
         <div class="main-content col-md-9 col-12">
-            <h2>Статьи с раздела <strong><?=$category['name']; ?></strong></h2>
+            <h2>Последние публикации</h2>
             <?php foreach ($posts as $post): ?>
                 <div class="post row">
                     <div class="img col-12 col-md-4">
@@ -60,7 +51,7 @@
                         <h3>
                             <a href="<?=BASE_URL . 'single.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 80) . '...'  ?></a>
                         </h3>
-                        <i class="far fa-user"> <?=isset($post['username']) ? $post['username'] : 'Неизвестный';?></i>
+                        <i class="far fa-user"> <?=$post['username'];?></i>
                         <i class="far fa-calendar"> <?=$post['created_date'];?></i>
                         <p class="preview-text">
 
@@ -69,7 +60,7 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-
+            <?php include("app/include/pagination.php"); ?>
         </div>
         <!-- sidebar Content -->
         <div class="sidebar col-md-3 col-12">
@@ -94,7 +85,9 @@
             </div>
 
         </div>
+
     </div>
+
 </div>
 
 <!-- блок main END-->
