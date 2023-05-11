@@ -2,10 +2,10 @@
 
 $driver = 'mysql';
 $host = 'localhost';
-$db_name = 'the_art_of_cooking_v1';
-//$db_name = 'the_art_of_cooking';
+$db_name = 'the_art_of_cooking';
+//$db_name = 'the_art_of_cooking_v1';
 $db_user = 'root';
-$db_pass = '';
+$db_pass = 'mysql';
 $charset = 'utf8';
 $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC];
