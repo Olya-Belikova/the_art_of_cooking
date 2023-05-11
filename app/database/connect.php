@@ -5,7 +5,7 @@ $host = 'localhost';
 $db_name = 'the_art_of_cooking_v1';
 //$db_name = 'the_art_of_cooking';
 $db_user = 'root';
-$db_pass = 'mysql';
+$db_pass = '';
 $charset = 'utf8';
 $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC];

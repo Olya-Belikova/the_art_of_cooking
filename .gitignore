@@ -397,5 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-#Файлы подключения к БД
+# Файлы подключения к БД
 .app/database/connect.php
