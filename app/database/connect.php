@@ -2,8 +2,8 @@
 
 $driver = 'mysql';
 $host = 'localhost';
-$db_name = 'the_art_of_cooking';
-//$db_name = 'the_art_of_cooking_v1';
+$db_name = 'the_art_of_cooking_v1';
+//$db_name = 'the_art_of_cooking';
 $db_user = 'root';
 $db_pass = 'mysql';
 $charset = 'utf8';

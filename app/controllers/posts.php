@@ -47,11 +47,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_post'])){
     $publish = isset($_POST['publish']) ? 1 : 0;
 
 
-    if($title === '' || $content === '' || $topic === ''){
+    /*if($title === '' || $content === '' || $topic === ''){
         array_push($errMsg, "Не все поля заполнены!");
     }elseif (mb_strlen($title, 'UTF8') < 7){
         array_push($errMsg, "Название статьи должно быть более 7-ми символов");
-    }else{
+    }else{*/
         $post = [
             'id_user' => $_SESSION['id'],
             'title' => $title,
@@ -64,7 +64,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_post'])){
         $post = insert('posts', $post);
         $post = selectOne('posts', ['id' => $id] );
         header('location: ' . BASE_URL . 'admin/posts/index.php');
-    }
+    //}
 }else{
     $id = '';
     $title = '';
@@ -115,11 +115,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_post'])){
     }
 
 
-    if($title === '' || $content === '' || $topic === ''){
+    /*if($title === '' || $content === '' || $topic === ''){
         array_push($errMsg, "Не все поля заполнены!");
     }elseif (mb_strlen($title, 'UTF8') < 7){
         array_push($errMsg, "Название статьи должно быть более 7-ми символов");
-    }else{
+    }else{*/
         $post = [
             'id_user' => $_SESSION['id'],
             'title' => $title,
@@ -131,7 +131,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_post'])){
 
         $post = update('posts', $id, $post);
         header('location: ' . BASE_URL . 'admin/posts/index.php');
-    }
+   // }
 }else{
     $title = $_POST['title'];
     $content = $_POST['content'];

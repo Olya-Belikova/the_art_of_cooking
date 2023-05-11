@@ -1,11 +1,12 @@
 <?php
 
-session_start();
-require 'connect.php';
+session_start(); //старт сессии PHP
+require 'connect.php'; //конект к файлу connect.php для доступа к БД
 
-function tt($value){
+ //тестовая функция(отладочная)
+function tt($value){ //функция принимает значение $value
     echo '<pre>';
-    print_r($value);
+    print_r($value); //вывод форматированного кода
     echo '</pre>';
     exit();
 }
@@ -16,39 +17,39 @@ function tte($value){
     exit();
 }
 // Проверка выполнения запроса к БД
-function dbCheckError($query){
+function dbCheckError($query){ //функция обращаеться к обекту $query
     $errInfo = $query->errorInfo();
-    if ($errInfo[0] !== PDO::ERR_NONE){
-        echo $errInfo[2];
+    if ($errInfo[0] !== PDO::ERR_NONE){ //если массив $errInfo[0] не равен ошибке ERR_NONE
+        echo $errInfo[2]; //выводиться переменная с индексом 2, который выводит ошибку
         exit();
     }
-    return true;
+    return true;//в ином влучае ошибок нет
 }
 
-// Запрос на получение данных с одной таблицы
-function selectAll($table, $params = []){
-    global $pdo;
-    $sql = "SELECT * FROM $table";
+// Запрос на получение всех данных с одной таблицы
+function selectAll($table, $params = []){ //отрибутом служит переменна я $table, которая будет являться именем таблици, к которой будет делаться запрос
+    global $pdo; //глобальная переменная
+    $sql = "SELECT * FROM $table"; //переменная $sql принимает переменную $table
 
-    if(!empty($params)){
-        $i = 0;
-        foreach ($params as $key => $value){
-            if (!is_numeric($value)){
+    if(!empty($params)){ //empty() - проверяет, пуста ои переменная $params. Если параметры не пустые, то...
+        $i = 0; //вспомогательная переменаая
+        foreach ($params as $key => $value){ //разбираем $params на ключ($key) и значение($value)
+            if (!is_numeric($value)){//если $value не являеться числом, то значение берется в ""
                 $value = "'".$value."'";
             }
-            if ($i === 0){
-                $sql = $sql . " WHERE $key=$value";
-            }else{
-                $sql = $sql . " AND $key=$value";
+            if ($i === 0){ //если переменная ровна 0, то..
+                $sql = $sql . " WHERE $key=$value"; //то мы обращаемся к $sql и подставляем значение $key и $value
+            }else{ //иначе подставляется AND
+                $sql = $sql . " AND $key=$value"; 
             }
-            $i++;
+            $i++; //инкримент
         }
     }
 
-    $query = $pdo->prepare($sql);
-    $query->execute();
-    dbCheckError($query);
-    return $query->fetchAll();
+    $query = $pdo->prepare($sql); //обращаемся к классу PDO и через метод prepare пробрасываем переменную $sql
+    $query->execute(); //команда выполнения запроса через метод execute 
+    dbCheckError($query); //проверка на ошибки
+    return $query->fetchAll(); //возвращаем все данные из одной таблицы
 }
 
 
@@ -79,37 +80,37 @@ function selectOne($table, $params = []){
 }
 
 // Запись в таблицу БД
-function insert($table, $params){
+function insert($table, $params){ //функйия принимает значение $table(таблицы) и ее параметры
     global $pdo;
-    $i = 0;
-    $coll = '';
-    $mask = '';
+    $i = 0; //дополнительная переменная жля корректного вывода
+    $coll = ''; //колонки
+    $mask = ''; //значение для колонки
     foreach ($params as $key => $value) {
-        if ($i === 0){
-            $coll = $coll . "$key";
-            $mask = $mask . "'" ."$value" . "'";
-        }else {
+        if ($i === 0){ //если $i === 0, то 
+            $coll = $coll . "$key"; //добавляем значние ключа без пробела и запятых
+            $mask = $mask . "'" ."$value" . "'"; //добавдяем значение для колонок в строковом виде
+        }else { //иначе выводим со знаками
             $coll = $coll . ", $key";
             $mask = $mask . ", '" . "$value" . "'";
         }
         $i++;
     }
 
-    $sql = "INSERT INTO $table ($coll) VALUES ($mask)";
+    $sql = "INSERT INTO $table ($coll) VALUES ($mask)"; //запрос записи значения в БД, в таблицу
 
     $query = $pdo->prepare($sql);
     $query->execute($params);
     dbCheckError($query);
-    return $pdo->lastInsertId();
+    return $pdo->lastInsertId(); //значение Id для будущей проверки и отследивания работы с записью
 }
 
-// Обновление строки в таблице
-function update($table, $id, $params){
+// Функция РЕДАКТИРОВАНИЯ строки в таблицу
+function update($table, $id, $params){ //функция принимает значение таблицы, id покоторому ищет строку и параметры для редактирования
     global $pdo;
     $i = 0;
-    $str = '';
+    $str = '';//строка запросов с обновленными данными
     foreach ($params as $key => $value) {
-        if ($i === 0){
+        if ($i === 0){//проверка для корректного ввода запроса
             $str = $str . $key . " = '" . $value . "'";
         }else {
             $str = $str .", " . $key . " = '" . $value . "'";
@@ -117,18 +118,18 @@ function update($table, $id, $params){
         $i++;
     }
 
-    $sql = "UPDATE $table SET $str WHERE id = $id";
+    $sql = "UPDATE $table SET $str WHERE id = $id"; //скрипт для обновления строки
     $query = $pdo->prepare($sql);
     $query->execute($params);
     dbCheckError($query);
 
 }
 
-// Обновление строки в таблице
-function delete($table, $id){
+// Функция УДАЛЕНИЯ строки в таблицу
+function delete($table, $id){ // функция принимает таблицу и id
     global $pdo;
     //DELETE FROM `topics` WHERE id = 3
-    $sql = "DELETE FROM $table WHERE id =". $id;
+    $sql = "DELETE FROM $table WHERE id =". $id; //запрос на удаление 
     $query = $pdo->prepare($sql);
     $query->execute();
     dbCheckError($query);
