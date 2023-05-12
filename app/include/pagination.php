@@ -1,4 +1,4 @@
-<nav aria-label="Page navigation example">
+<nav class="navigation" aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
         <li class="page-item"><a class="page-link" href="?page=1">В начало</a></li>
         <?php if($page > 1): ?>

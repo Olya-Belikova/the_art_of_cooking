@@ -1,4 +1,4 @@
-<header class="container-fluid">
+<header class="container">
     <div class="container">
         <div class="row">
             <div id="logo" class="col-4">
@@ -18,20 +18,16 @@
                 <li id="login">
                         <?php if (isset($_SESSION['id'])): ?>
                             <a href="#">
-                                
                                 <?php echo $_SESSION['login']; ?>
                             </a>
                             <ul>
                                 <?php if ($_SESSION['admin']): ?>
-                                    <li><a href="#">Админ панель</a> </li>
+                                    <li class="admin-button"><a href="#">Панель управления</a> </li>
                                 <?php endif; ?>
-                                <li><a href="<?php echo BASE_URL . "logout.php"; ?>">Выход</a> </li>
+                                <li class="exit-button"><a href="<?php echo BASE_URL . "logout.php"; ?>">Выход</a> </li>
                             </ul>
                         <?php else: ?>
-                            <a href="<?php echo BASE_URL . "log.php"; ?>">
-                                
-                                Войти
-                            </a>
+                            <a href="<?php echo BASE_URL . "log.php"; ?>">Войти</a>
                             <ul>
                                 <li><a href="<?php echo BASE_URL . "reg.php"; ?>">Регистрация</a> </li>
                             </ul>
