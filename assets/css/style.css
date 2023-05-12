@@ -303,12 +303,16 @@ padding-left: 0;
     display: inline-block;
     margin-right: 20px;
 }
-.single_post a{
-    text-decoration: underline;
+.btn-primary {
+    background-color: #2C1B14;
+    border-color:#2C1B14;
+    color: #fffefd;
 }
-.single_post a:hover{
-    text-decoration: none;
-    color: #008489;
+
+.btn-primary:hover {
+background-color: #6d5a52;
+border-color:#6d5a52;
+color: #fffefd;
 }
 /*
 FORMS

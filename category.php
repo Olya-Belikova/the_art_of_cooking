@@ -54,8 +54,6 @@
                             <h3><a
                                     href="<?=BASE_URL . 'single.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 80)?></a>
                             </h3>
-                            <p class="author"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Aвтор:
-                                <i><?=$post['username'];?></i></p>
                         </div>
                         <i class="far fa-calendar"> <?=$post['created_date'];?></i>
                         <p class="preview-text">
