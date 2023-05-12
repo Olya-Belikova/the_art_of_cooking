@@ -1,5 +1,4 @@
 /* -------------- ОБЩИЕ СВОЙСТВА -------------- */
-
 *{
     font-family: 'Lato', sans-serif;
 }
@@ -14,14 +13,18 @@ h6 {
     font-family: "Playfair Display";
     color: #2C1B14;
 }
-
 body{
     background: #fffefd;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
-
 a{
     text-decoration: none;
     color: inherit;
+}
+main {
+    flex: 1;
 }
 
 /* -------------- ХЕДЕР -------------- */
@@ -224,7 +227,6 @@ input{
 }
 
 /* -------------- ФУТЕР -------------- */
-
 .footer {
     background: #F2D4C5;
     color: #2C1B14;

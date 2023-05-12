@@ -1,21 +1,20 @@
-<header class="container-fluid">
+<header class="container">
     <div class="container">
         <div class="row">
-            <div class="col-4">
-                <h1>
-                    <a href="<?php echo BASE_URL ?>">My blog</a>
-                </h1>
+            <div id="logo" class="col-4">
+                    <a href="<?php echo BASE_URL ?>">
+                        <img src="../../assets/logo.svg" alt="logo" height="55px" />
+                    </a>
             </div>
             <nav class="col-8">
                 <ul>
                     <li>
                         <a href="#">
-                            <i class="fa fa-user"></i>
                             <?php echo $_SESSION['login']; ?>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo BASE_URL . "logout.php"; ?>">Выход</a>
+                        <a class="logout-btn" href="<?php echo BASE_URL . "logout.php"; ?>">Выход</a>
                     </li>
                 </ul>
             </nav>
