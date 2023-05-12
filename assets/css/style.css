@@ -24,17 +24,6 @@ a{
     color: inherit;
 }
 
-input{
-    padding: 10px 12px;
-    display: block;
-    width: 100%;
-    border-radius: 3px;
-    border: 1px solid #ececec;
-    line-height: 1.5rem;
-    color: #444444;
-    font-size: 1rem;
-}
-
 /* -------------- ХЕДЕР -------------- */
 
 header {
@@ -95,6 +84,7 @@ header ul li a{
 
 header ul li a:hover {
     background: #b19588;
+    text-decoration: underline;
     transition: 0.5s;
     color:#fff;
 }
@@ -184,7 +174,7 @@ header ul li ul li a {
 
 .page-link {
     border-color: #b19588;
-    color:#2C1B14;
+    color:#6d5a52;
 }
 
 .page-link:hover {
@@ -198,6 +188,15 @@ header ul li ul li a {
 .search{
     margin-top: 96px;
 }
+input{
+    padding: 10px 12px;
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #F2D4C5;
+    line-height: 1.5rem;
+    font-size: 1rem;
+}
 .sidebar .section{
     background: #ffffff;
     padding: 20px;
@@ -208,16 +207,15 @@ header ul li ul li a {
     margin: 0px;
     padding: 0px;
     list-style: none;
-    border-top: 1px solid #e0e0e0;
 }
 .sidebar .topics ul li a{
     display: block;
     padding: 15px 0px 15px 0px;
-    border-bottom: 1px solid #e0e0e0;
+    border-top: 1px solid #F2D4C5;
     transition: all 0.3s;
     text-decoration: none;
     font-weight: 500;
-    color: #5c5b5b;
+    color: #6d5a52;
     font-size: 1.2em;
 }
 .sidebar .topics ul li a:hover{
@@ -236,6 +234,7 @@ header ul li ul li a {
     padding: 22px;
 }
 .footer h4, .footer h3 {
+    font-weight: 800;
     color: #2C1B14;
 }
 .footer .about .contact span{
@@ -243,67 +242,40 @@ header ul li ul li a {
     font-size: 1.1em;
     margin-bottom: 8px;
 }
-.footer .about .socials a{
-    border: 1px solid gray;
-    width: 45px;
-    height: 41px;
-    padding-top: 5px;
-    margin-right: 5px;
-    text-align: center;
-    display: inline-block;
-    font-size: 1.3em;
-    border-radius: 5px;
-    transition: all .3s;
-    color: #ffffff;
-}
-.footer .about .socials a:hover {
-    border: 1px solid white;
-    color: white;
-    transition: all .3s;
-}
-
 .footer .links ul {
 list-style-type: none;
 padding-left: 0;
 }
-
 .footer .links ul a {
     display: block;
-    margin-bottom: 10px;
-    font-size: 1.2em;
+    margin-bottom: 7px;
+    font-size: 1em;
     transition: all .3s;
     color: #2C1B14;
     text-decoration: none;
 }
 .footer .links ul a:last-child {
-    margin-bottom: 80px;
+    margin-bottom: 100px;
 }
-
 .footer .links ul a:hover {
-    color: white;
+    color: #6d5a52;
     margin-left: 15px;
     transition: all .3s;
 }
-
-.footer .contact-form .contact-input {
-    background: #272727;
-    color: #bebdbd;
-    margin-bottom: 10px;
-    line-height: 1.5rem;
-    padding: .9rem 1.4rem;
-    border: none;
-    width: 100%;
+.socials a {
+    color: #2C1B14;
 }
-
-.footer .contact-form .contact-input:focus {
-    background: #1a1a1a;
+.socials a:hover {
+    color:#6d5a52;
 }
-
-.footer .contact-form .contact-btn {
-    float: right;
+.contact a {
     font-size: 1.1em;
+    color: #2C1B14;
+    text-decoration: underline;
 }
-
+.contact a:hover {
+    color:#6d5a52;
+}
 .footer-bottom {
     background: #b19588;
     color: #2C1B14;
@@ -346,28 +318,23 @@ FORMS
 .reg_form input{
     height: 3.3rem;
 }
-.reg_form a {
+
+.login-btn {
+    border: none;
+    background-color: #2C1B14;
+}
+
+.reg-link {
+    color:#6d5a52;
     font-size: 1.2em;
-    transition: all .3s;
-    color: #5c5b5b;
     text-decoration: underline;
     margin-left: 60px;
 }
 
-.reg_form a:hover {
-    margin-left: 55px;
-    transition: all .3s;
+.reg-link:hover {
+    color:#b19588;
 }
 
-/*
-FORMS
- */
-
-form div.err p{
-    color: red;
-    font-style: italic;
-    font-size: 0.8rem;
-}
 /*
 COMMENTS
  */

@@ -24,13 +24,16 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
 
     <!-- Custom Styling -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>My blog</title>
+    <link rel="icon" href="assets/favicon.ico">
+    <title>The art of cooking</title>
 </head>
 <body>
 
@@ -41,25 +44,31 @@
     <div class="content row">
         <!-- Main Content -->
         <div class="main-content col-md-9 col-12">
-            <h2>Последние публикации</h2>
+            <h2>Каталог рецептов</h2>
+            <h2></h2>
+                <p>
+                Внимательно изучайте, берите на вооружение самые разнообразные, вкусные рецепты, пошаговые фото помогут вам в этом интересном и увлекательном деле. Как много нового и полезного позволяют узнать пошаговые инструкции, процесс обучения сводится к четкому следованию этим инструкциям, показанных в фотографиях. И все равно, что вы будете готовить, пусть это будет пошаговый рецепт супа или салата – результат, как правило, будет великолепный.
+                </p>
             <?php foreach ($posts as $post): ?>
-                <div class="post row">
-                    <div class="img col-12 col-md-4">
-                        <img src="<?=BASE_URL . 'assets/images/posts/' . $post['img'] ?>" alt="<?=$post['title']?>" class="img-thumbnail">
+                    <div class="post row">
+                        <div class="img col-12 col-md-4">
+                            <img src="<?=BASE_URL . 'assets/images/posts/' . $post['img'] ?>" alt="<?=$post['title']?>"
+                                class="img-thumbnail">
+                        </div>
+                        <div class="post_text col-12 col-md-8">
+                            <div class="post-name"
+                                style="display: flex; justify-content:space-between; align-items: center;">
+                                <h3><a href="<?=BASE_URL . 'single.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 80)?></a></h3>
+                                <p class="author"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Aвтор: <i><?=$post['username'];?></i></p>
+                            </div>
+                            <i class="far fa-calendar"> <?=$post['created_date'];?></i>
+                            <p class="preview-text">
+                                <?=mb_substr($post['content'], 0, 125, 'UTF-8'). '...'  ?>
+                            </p>
+                        </div>
                     </div>
-                    <div class="post_text col-12 col-md-8">
-                        <h3>
-                            <a href="<?=BASE_URL . 'single.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 80) . '...'  ?></a>
-                        </h3>
-                        <i class="far fa-user"> <?=$post['username'];?></i>
-                        <i class="far fa-calendar"> <?=$post['created_date'];?></i>
-                        <p class="preview-text">
-
-                            <?=mb_substr($post['content'], 0, 55, 'UTF-8'). '...'  ?>
-                        </p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+                    <?php endforeach; ?>
+                    
             <?php include("app/include/pagination.php"); ?>
         </div>
         <!-- sidebar Content -->
