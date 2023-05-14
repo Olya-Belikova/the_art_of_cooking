@@ -31,39 +31,35 @@
     <main class="flex-shrink-0">
         <?php include("../../app/include/header-admin.php"); ?>
         <div class="container">
-            <h2 class="main-header text-center">Управление записями</h2>
+
             <?php include "../../app/include/sidebar-admin.php"; ?>
 
             <div class="posts col-9">
+                <h2 class="main-header text-center">Управление записями</h2>
+                <br>
                 <div class="button row">
                     <a href="<?php echo BASE_URL . "admin/posts/create.php";?>"
                         class="col-2 btn btn-success">Создать</a>
-                    <span class="col-1"></span>
-                    <a href="<?php echo BASE_URL . "admin/posts/index.php";?>"
-                        class="col-3 btn btn-warning">Редактировать</a>
                 </div>
                 <div class="row title-table">
-
-                    <!--<div class="mb-12 col-12 col-md-12 err">
-                    <p><//?=$_SESSION['error'];?></p>
-                </div>-->
                     <div class="col-1">ID</div>
-                    <div class="col-5">Название</div>
+                    <div class="col-3">Название</div>
                     <div class="col-2">Автор</div>
-                    <div class="col-4"></div>
+                    <div class="col-6"></div>
                 </div>
                 <?php foreach ($postsAdm as $key => $post): ?>
                 <div class="row post">
                     <div class="id col-1"><?=$key + 1; ?></div>
-                    <div class="title col-5"><?=mb_substr($post['title'], 0, 50, 'UTF-8')?></div>
+                    <div class="title col-3"><?=mb_substr($post['title'], 0, 50, 'UTF-8')?></div>
                     <div class="author col-2"><?=$post['username']; ?></div>
-                    <div class="col-1"><a class="red" href="edit.php?id=<?=$post['id'];?>">edit</a></div>
-                    <div class="col-1"><a class="del" href="edit.php?delete_id=<?=$post['id'];?>">delete</a></div>
+                    <div class="col-2"><a class="red" href="edit.php?id=<?=$post['id'];?>">редактировать</a></div>
+                    <div class="col-1"><a class="del" href="edit.php?delete_id=<?=$post['id'];?>">удалить</a></div>
                     <?php if ($post['status']): ?>
-                    <div class="col-2"><a class="status"
-                            href="edit.php?publish=0&pub_id=<?=$post['id'];?>">unpublish</a></div>
+                    <div class="col-3"><a class="status"
+                            href="edit.php?publish=0&pub_id=<?=$post['id'];?>">опубликовано</a></div>
                     <?php else: ?>
-                    <div class="col-2"><a class="status" href="edit.php?publish=1&pub_id=<?=$post['id'];?>">publish</a>
+                    <div class="col-3"><a class="status" href="edit.php?publish=1&pub_id=<?=$post['id'];?>">не
+                            опубликовано</a>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -71,7 +67,7 @@
             </div>
         </div>
     </main>
-    
+
     <?php include("../../app/include/footer.php"); ?>
 </body>
 

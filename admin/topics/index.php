@@ -31,18 +31,13 @@
     <main class="flex-shrink-0">
         <?php include("../../app/include/header-admin.php"); ?>
         <div class="container">
-            
-            <h2 class="main-header text-center">Управление категориями</h2>
-            
             <?php include "../../app/include/sidebar-admin.php"; ?>
-
             <div class="posts col-9">
+            <h2 class="main-header text-center">Управление категориями</h2>
+            <br>
                 <div class="button row">
                     <a href="<?php echo BASE_URL . "admin/topics/create.php";?>"
-                        class="col-2 btn btn-success">Создать</a>
-                    <span class="col-1"></span>
-                    <a href="<?php echo BASE_URL . "admin/topics/index.php";?>"
-                        class="col-3 btn btn-warning">Редактировать</a>
+                        class="col-2 btn btn-success">Создать</a>                    
                 </div>
                 <div class="row title-table">
                     <!-- <h2>Управление категориями</h2> -->
@@ -54,8 +49,8 @@
                 <div class="row post">
                     <div class="id col-1"><?=$key + 1; ?></div>
                     <div class="title col-5"><?=$topic['name']; ?></div>
-                    <div class="col-2"><a class="red" href="edit.php?id=<?=$topic['id']; ?>">edit</a></div>
-                    <div class="col-2"><a class="del" href="index.php?del_id=<?=$topic['id']; ?>">delete</a></div>
+                    <div class="col-2"><a class="red" href="edit.php?id=<?=$topic['id']; ?>">редактировать</a></div>
+                    <div class="col-2"><a class="del" href="index.php?del_id=<?=$topic['id']; ?>">удалить</a></div>
                 </div>
                 <?php endforeach; ?>
             </div>

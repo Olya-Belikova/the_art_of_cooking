@@ -89,6 +89,7 @@ header ul li ul li a {
     color: #2C1B14;
 }
 
+/* -------------- ОСНОВНОЙ КОНТЕНТ -------------- */
 .logout-btn {
     font-weight: 600;
     height: 50px;
@@ -105,26 +106,31 @@ header ul li ul li a {
     border-color:#2C1B14;
     color: #fffefd;
 }
-
 .btn-success:hover {
 background-color: #6d5a52;
 border-color:#6d5a52;
 color: #fffefd;
 }
-
 .btn-warning {
     background-color: #6d5a52;
     color: #fffefd;
     border:none;
 }
-
 .btn-warning:hover {
     background-color: #b19588;
     border:none;
     color: #fffefd;
 }
-
-
+.form-check-input {
+    border-color: #6d5a52;
+}
+.form-check-input:checked {
+    background-color: #6d5a52;
+    border-color: #6d5a52;
+}
+.form-check-input:focus {
+    border-color: #6d5a52;
+}
 
 /* -------------- ФУТЕР -------------- */
 .footer {
@@ -267,7 +273,7 @@ SIDEBAR
 
 .posts{
     height: 100%;
-    padding: 40px 100px 100px;
+    padding: 0px 100px 40px 100px;
 }
 
 .posts h2{

@@ -19,8 +19,10 @@ include "../../app/controllers/users.php";
     <!-- Custom Styling -->
     <link rel="stylesheet" href="../../assets/css/admin.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>My blog</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
+    <link rel="icon" href="../../assets/favicon.ico">
+    <title>The art of cooking</title>
 </head>
 <body>
 
@@ -30,43 +32,38 @@ include "../../app/controllers/users.php";
     <?php include "../../app/include/sidebar-admin.php"; ?>
 
     <div class="posts col-9">
-        <div class="button row">
-            <a href="<?php echo BASE_URL . "admin/users/create.php";?>" class="col-2 btn btn-success">Создать</a>
-            <span class="col-1"></span>
-            <a href="<?php echo BASE_URL . "admin/users/index.php";?>" class="col-3 btn btn-warning">Редактировать</a>
-        </div>
-        <div class="row title-table">
-            <h2>Создать пользователя</h2>
-        </div>
+    <h2>Редактировать пользователя</h2>
+    <br>
         <div class="row add-post">
-            <div class="mb-12 col-12 col-md-12 err">
-                <!-- Вывод массива с ошибками -->
-                <?php include "../../app/helps/errorInfo.php"; ?>
-            </div>
             <form action="edit.php" method="post">
                 <input name="id" value="<?=$id;?>" type="hidden">
                 <div class="col">
-                    <label for="formGroupExampleInput" class="form-label">Логин</label>
-                    <input name="login" value="<?=$username;?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="введите ваш логин...">
+                    <label for="formGroupExampleInput" class="form-label">Логин:</label>
+                    <input name="login" value="<?=$username;?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="Логин">
                 </div>
+                <br>
                 <div class="col">
-                    <label for="exampleInputEmail1" class="form-label">Email</label>
-                    <input name="mail" value="<?=$email;?>" type="email" class="form-control" readonly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="введите ваш email...">
+                    <label for="exampleInputEmail1" class="form-label">E-mail:</label>
+                    <input name="mail" value="<?=$email;?>" type="email" class="form-control" readonly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
                 </div>
+                <br>
                 <div class="col">
-                    <label for="exampleInputPassword1" class="form-label">Сбросить пароль</label>
-                    <input name="pass-first" type="password" class="form-control" id="exampleInputPassword1" placeholder="введите ваш пароль...">
+                    <label for="exampleInputPassword1" class="form-label">Новый пароль:</label>
+                    <input name="pass-first" type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
                 </div>
+                <br>
                 <div class="col">
-                    <label for="exampleInputPassword2" class="form-label">Повторите пароль</label>
-                    <input name="pass-second" type="password" class="form-control" id="exampleInputPassword2" placeholder="повторите ваш пароль...">
+                    <label for="exampleInputPassword2" class="form-label">Повтор пароля:</label>
+                    <input name="pass-second" type="password" class="form-control" id="exampleInputPassword2" placeholder="Повтор пароля">
                 </div>
+                <br>
                 <input name="admin" class="form-check-input" value="1" type="checkbox" id="flexCheckChecked">
                 <label class="form-check-label" for="flexCheckChecked">
-                    Admin?
+                    Администратор
                 </label>
                 <div class="col">
-                    <button name="update-user" class="btn btn-primary" type="submit">Обновить</button>
+                    <br>
+                    <button name="update-user" class="btn btn-primary btn-success" type="submit">Обновить</button>
                 </div>
             </form>
         </div>

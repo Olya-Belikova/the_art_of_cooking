@@ -20,8 +20,10 @@ include "../../app/controllers/posts.php";
     <!-- Custom Styling -->
     <link rel="stylesheet" href="../../assets/css/admin.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>My blog</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
+    <link rel="icon" href="../../assets/favicon.ico">
+    <title>The art of cooking</title>
 </head>
 <body>
 
@@ -42,39 +44,46 @@ include "../../app/controllers/posts.php";
             <form action="edit.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?=$id; ?>">
                 <div class="col mb-4">
-                    <input value="<?=$post['title']; ?>" name="title" type="text" class="form-control" placeholder="Title" aria-label="Название статьи">
+                <label for="name" class="form-label">Имя записи:</label>
+                    <input id="name" value="<?=$post['title']; ?>" name="title" type="text" class="form-control" placeholder="Имя записи" aria-label="Название статьи">
                 </div>
                 <div class="col">
-                    <label for="editor" class="form-label">Содержимое записи</label>
+                    <label for="editor" class="form-label">Содержание записи:</label>
                     <textarea name="content" id="editor" class="form-control" rows="6"><?=$post['content']; ?></textarea>
                 </div>
-                <div class="input-group col mb-4 mt-4">
+                <br>
+                <label for="inputGroupFile02" class="form-label">Загрузите фото:</label>
+                <div class="input-group col mb-4">
                     <input name="img" type="file" class="form-control" id="inputGroupFile02">
-                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                    <label class="input-group-text" for="inputGroupFile02">Загрузить</label>
                 </div>
 
-                <select name="topic" class="form-select mb-2" aria-label="Default select example">
-
+                <label class="form-check-label" for="topic">
+                        Категория:
+                        </label>
+                <select name="topic" class="form-select mb-2" aria-label="Default select example" id="topic">
                     <?php foreach ($topics as $key => $topic): ?>
                         <option value="<?=$topic['id']; ?>"><?=$topic['name'];?></option>
                     <?php endforeach; ?>
                 </select>
 
                 <div class="form-check">
+                    <br>
                     <?php if (empty($publish) && $publish == 0): ?>
                         <input name="publish" class="form-check-input" type="checkbox" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
-                            Publish
+                        Опубликовать
                         </label>
                     <?php else: ?>
                         <input name="publish" class="form-check-input" type="checkbox" id="flexCheckChecked" checked>
                         <label class="form-check-label" for="flexCheckChecked">
-                            Publish
+                            Опубликовать
                         </label>
                     <?php endif; ?>
                 </div>
                 <div class="col col-6">
-                    <button name="edit_post" class="btn btn-primary" type="submit">Сохранить запись</button>
+                    <br>
+                    <button name="edit_post" class="btn btn-primary btn-success" type="submit">Сохранить запись</button>
                 </div>
             </form>
         </div>

@@ -22,7 +22,7 @@
                             </a>
                             <ul>
                                 <?php if ($_SESSION['admin']): ?>
-                                    <li class="admin-button"><a href="#">Панель управления</a> </li>
+                                    <li class="admin-button"><a href="<?php echo BASE_URL . "admin/posts/index.php"; ?>">Панель управления</a> </li>
                                 <?php endif; ?>
                                 <li class="exit-button"><a href="<?php echo BASE_URL . "logout.php"; ?>">Выход</a> </li>
                             </ul>

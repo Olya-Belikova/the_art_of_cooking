@@ -32,34 +32,36 @@
         <?php include("../../app/include/header-admin.php"); ?>
 
         <div class="container">
-            <h2 class="main-header text-center">Управление комментариями</h2>
+            
             <?php include "../../app/include/sidebar-admin.php"; ?>
 
             <div class="posts col-9">
+            <h2 class="main-header text-center">Управление комментариями</h2>
+            <br>
                 <div class="row title-table">
                     <div class="col-1">ID</div>
-                    <div class="col-5">Текст</div>
+                    <div class="col-3">Комментарий</div>
                     <div class="col-2">Автор</div>
-                    <div class="col-4"></div>
+                    <div class="col-6"></div>
                 </div>
                 <?php foreach ($commentsForAdm as $key => $comment): ?>
                 <div class="row post">
                     <div class="id col-1"><?=$comment['id']; ?></div>
-                    <div class="title col-5"><?=mb_substr($comment['comment'], 0, 50, 'UTF-8'). '...'  ?></div>
+                    <div class="title col-3"><?=mb_substr($comment['comment'], 0, 50, 'UTF-8'). '...'  ?></div>
                     <?php
                         $user = $comment['email'];
                         $user = explode('@', $user);
                         $user = $user[0];
                     ?>
-                    <div class="author col-3"><?=$user . "@"; ?></div>
-                    <div class="col-1"><a class="red" href="edit.php?id=<?=$comment['id'];?>">edit</a></div>
-                    <div class="col-1"><a class="del" href="edit.php?delete_id=<?=$comment['id'];?>">delete</a></div>
+                    <div class="author col-2"><?=$user; ?></div>
+                    <div class="col-2"><a class="red" href="edit.php?id=<?=$comment['id'];?>">редактировать</a></div>
+                    <div class="col-1"><a class="del" href="edit.php?delete_id=<?=$comment['id'];?>">удалить</a></div>
                     <?php if ($comment['status']): ?>
-                    <div class="col-1"><a class="status"
-                            href="edit.php?publish=0&pub_id=<?=$comment['id'];?>">unpublish</a></div>
+                    <div class="col-3"><a class="status"
+                            href="edit.php?publish=0&pub_id=<?=$comment['id'];?>">опубликовано</a></div>
                     <?php else: ?>
-                    <div class="col-1"><a class="status"
-                            href="edit.php?publish=1&pub_id=<?=$comment['id'];?>">publish</a></div>
+                    <div class="col-3"><a class="status"
+                            href="edit.php?publish=1&pub_id=<?=$comment['id'];?>">не опубликовано</a></div>
                     <?php endif; ?>
                 </div>
                 <?php endforeach; ?>

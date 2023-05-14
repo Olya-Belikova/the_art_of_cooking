@@ -32,16 +32,14 @@ include "../../app/controllers/users.php"
         <?php include("../../app/include/header-admin.php"); ?>
 
         <div class="container">
-            <h2 class="main-header text-center">Управление пользователями</h2>
             <?php include "../../app/include/sidebar-admin.php"; ?>
 
             <div class="posts col-9">
+            <h2 class="main-header text-center">Управление пользователями</h2>
+            <br>
                 <div class="button row">
                     <a href="<?php echo BASE_URL . "admin/users/create.php";?>"
                         class="col-2 btn btn-success">Создать</a>
-                    <span class="col-1"></span>
-                    <a href="<?php echo BASE_URL . "admin/users/index.php";?>"
-                        class="col-3 btn btn-warning">Редактировать</a>
                 </div>
                 <div class="row title-table">
 
@@ -57,12 +55,12 @@ include "../../app/controllers/users.php"
                     <div class="col-2"><?=$user['username'];?></div>
                     <div class="col-3"><?=$user['email'];?></div>
                     <?php if ($user['admin'] == 1): ?>
-                    <div class="col-2">Admin</div>
+                    <div class="col-2">Администратор</div>
                     <?php else: ?>
-                    <div class="col-2">User</div>
+                    <div class="col-2">Пользователь</div>
                     <? endif; ?>
-                    <div class="col-2"><a class="red" href="edit.php?edit_id=<?=$user['id'];?>">edit</a></div>
-                    <div class="col-2"><a class="del" href="index.php?delete_id=<?=$user['id'];?>">delete</a></div>
+                    <div class="col-2"><a class="red" href="edit.php?edit_id=<?=$user['id'];?>">редактировать</a></div>
+                    <div class="col-2"><a class="del" href="index.php?delete_id=<?=$user['id'];?>">удалить</a></div>
                 </div>
                 <?php endforeach; ?>
             </div>
